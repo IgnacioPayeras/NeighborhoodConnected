@@ -15,7 +15,7 @@ const Button = (props) => {
   const buttonClass = buttonTypes[props.type] || buttonTypes.normal;
 
   return (
-    <button className={`px-4 py-2 rounded ${buttonClass} ${bgColors[props.color]}`} onClick={props.onClick}>{props.name}</button>
+    <button className={`px-4 py-2 rounded ${buttonClass} ${bgColors[props.color]} ${props.className}`} onClick={props.onClick}>{props.name}</button>
   );
 };
 

@@ -4,8 +4,8 @@ import Logo from "./Navbar/Logo";
 
 const Navbar = () => {
   const navbarItems = [
-    { name: "Home", link: "#" },
-    { name: "Events", link: "#" },
+    { name: "Home", link: "/" },
+    { name: "Events", link: "events/" },
     { name: "Docs", link: "#" },
     { name: "Announcements", link: "#" },
     { name: "Reports", link: "#" },
@@ -17,7 +17,7 @@ const Navbar = () => {
       <Logo />
       <ul className="flex">
         {navbarItems.map((item, index) => (
-          <Item key={index} title={item.name} link={item.link} />
+          <Item key={index} title={item.name} link={item.link}/>
         ))}
       </ul>
     </nav>
