@@ -4,7 +4,8 @@ from apps.user.models import User
 # Create your models here.
 class Event(models.Model):
   title = models.CharField(max_length=100)
-  datetime = models.DateTimeField()
+  start_datetime = models.DateTimeField()
+  end_datetime = models.DateTimeField()
   location = models.CharField(max_length=50)
   description = models.TextField()
   id_created_by = models.ForeignKey(User, on_delete=models.CASCADE)

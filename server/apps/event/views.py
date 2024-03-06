@@ -10,4 +10,11 @@ class EventView(viewsets.ModelViewSet):
 
 class UserEventView(viewsets.ModelViewSet):
   serializer_class = UserEventSerializer
-  queryset = User_event.objects.all()
+
+  def get_queryset(self):
+    id_user = self.request.query_params.get('id_user')
+    if id_user:
+        queryset = User_event.objects.filter(id_user=id_user)
+    else:
+        queryset = User_event.objects.all()
+    return queryset

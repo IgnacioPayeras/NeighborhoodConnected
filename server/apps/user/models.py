@@ -17,4 +17,4 @@ class User(models.Model):
   id_user_role = models.ForeignKey(User_role, on_delete=models.CASCADE)
 
   def __str__(self):
-    return f"{self.names} {self.lastnames} {self.id_account}"
+    return f"{self.names} {self.lastnames}"

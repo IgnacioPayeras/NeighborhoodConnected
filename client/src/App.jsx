@@ -1,8 +1,23 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css'
+
+// Navbar
+import Navbar from './components/Navbar'
+
+// Pages
+import { Events } from './pages/Events'
+import { CreateEventForm } from './pages/CreateEventForm'
 
 const App = () => {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/events' element={<Events />}/>
+        <Route path='/events/create_event' element={<CreateEventForm />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
