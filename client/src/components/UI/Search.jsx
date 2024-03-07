@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import searchIcon from "../../assets/search.svg";
 
 const Search = (props) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -27,7 +28,7 @@ const Search = (props) => {
         onChange={handleInputChange}
       />
       <div>
-        <img src={props.icon} alt="search" className="absolute inset-y-4 left-0 p-3 pointer-events-none"/>
+        <img src={searchIcon} alt="search" className="absolute inset-y-4 left-0 p-3 pointer-events-none"/>
       </div>
       <label
         className={`absolute left-10 top-4 transition-all duration-300 ${

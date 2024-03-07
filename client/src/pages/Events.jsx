@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CardList from "../components/Events/CardList";
 import Search from "../components/UI/Search";
 import Button from "../components/UI/Button";
-import searchIcon from "../assets/search.svg";
 
 import { getAllEvents, getAllUserEvents } from "../api/events.api";
 
@@ -47,7 +46,6 @@ export const Events = () => {
       </h3>
       <div className="xl:flex">
         <Search
-          icon={searchIcon}
           classNameContainer="w-full mr-2 mb-2 xl:w-11/12"
           className="w-full pl-10"
           placeholder="Search"
