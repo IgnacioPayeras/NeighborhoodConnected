@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "../UI/Badge";
 import Button from "../UI/Button.jsx";
+import { createUserEvent } from "../../api/events.api.js";
 
 const Card = (props) => {
-  const participate = props.participateEvent;
+  const [participate, setParticipate] = useState(props.participateEvent);
   const pending = props.pending;
   const bgClass = pending === true ? "bg-purple" : "bg-green";
 
+  useEffect(() => {
+    setParticipate(props.participateEvent)
+  }, [props.participateEvent])
+  
   function formatDateTime(datetime) {
     var originalDate = new Date(datetime);
 
@@ -42,22 +47,29 @@ const Card = (props) => {
     return formattedDate;
   }
 
+  const handleParticipate = async (data) => {
+    const response = await createUserEvent(data)
+    if(response){
+      setParticipate(!props.participateEvent)
+    }
+  }
   return (
     <div className={`${bgClass} text-white rounded-lg p-8 my-5`}>
       {pending && participate ? <Badge text={props.text} pending={pending} /> : null}
       <h2 className="font-bold my-2 text-3xl">{props.title}</h2>
       <p className="my-2">{props.description}</p>
-      <div className="flex items-center justify-between">
-        {pending && !participate ? (
-          <Button name="Participate" type="secondary" color="transparent" />
-        ) : null}
-
+      <div className="flex flex-col">
+        
         <span className="font-bold">
           {`${formatDateTime(props.start_datetime)} - ${formatDateTime(
             props.end_datetime
           )}`}
           , {props.location}
         </span>
+        {pending && !participate ? (
+          <Button name="Participate" type="secondary" color="transparent" onClick={() => handleParticipate({id_user: 1, id_event: props.id})}/>
+        ) : null}
+
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const Form = () => {
 
   return (
     <form
-      className="bg-purple text-white rounded-lg p-8 w-2/5"
+      className="bg-purple text-white rounded-lg p-8 w-full md:w-3/4"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col mb-4">

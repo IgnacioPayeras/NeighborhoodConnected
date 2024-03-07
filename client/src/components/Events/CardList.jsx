@@ -9,10 +9,11 @@ const CardList = (props) => {
   return (
     <div className="mt-10">
       <span className="font-semibold">{props.status}</span>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="flex flex-col lg:grid grid-cols-2 gap-3">
         {searchFilteredArray.map((event) => (
           <Card
             key={event.id}
+            id={event.id}
             text={props.status === "Pending" ? "Participating" : null}
             title={event.title}
             description={event.description}

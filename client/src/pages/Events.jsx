@@ -45,10 +45,10 @@ export const Events = () => {
         All events are displayed here, ordered by date and time. You can view
         events that have ended.
       </h3>
-      <div className="flex items-center mt-2">
+      <div className="xl:flex">
         <Search
           icon={searchIcon}
-          classNameContainer="w-11/12 mr-2"
+          classNameContainer="w-full mr-2 mb-2 xl:w-11/12"
           className="w-full pl-10"
           placeholder="Search"
           onChangeValue={(event) => {

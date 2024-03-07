@@ -20,3 +20,5 @@ export const getAllUserEvents = (id_user = null) => {
   }
   return userEventsApi.get(url);
 };
+
+export const createUserEvent = (userEvent) => userEventsApi.post("/", userEvent)
