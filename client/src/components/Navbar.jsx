@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Item from "./Navbar/Item";
 import Logo from "./Navbar/Logo";
 
 const Navbar = () => {
+  const [currentPage, setCurrentPage] = useState("Home");
   const navbarItems = [
     { name: "Home", link: "/" },
     { name: "Events", link: "events/" },
@@ -12,12 +13,19 @@ const Navbar = () => {
     { name: "Profile", link: "#" },
   ];
 
+  console.log(currentPage)
   return (
-    <nav className="shadow-md flex justify-between p-10">
+    <nav className="shadow-md flex justify-between px-10">
       <Logo />
       <ul className="flex">
         {navbarItems.map((item, index) => (
-          <Item key={index} title={item.name} link={item.link}/>
+          <Item
+            key={index}
+            title={item.name}
+            link={item.link}
+            selected={currentPage === item.name}
+            onClick={() => setCurrentPage(item.name)}
+          />
         ))}
       </ul>
     </nav>
