@@ -10,6 +10,7 @@ const userEventsApi = axios.create({
 
 // Events
 export const getAllEvents = () => eventsApi.get("/");
+export const createEvent = (event) => eventsApi.post("/", event)
 
 // User events
 export const getAllUserEvents = (id_user = null) => {

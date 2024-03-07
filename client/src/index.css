@@ -29,6 +29,24 @@ h3 {
   line-height: 1.5rem;
 }
 
+input {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  color: black;
+}
+
+input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+input::placeholder {
+  color: #111;
+  opacity: 48%;
+}
+
+
 @keyframes slideIn {
   0% {
     transform: scaleX(0);

@@ -60,6 +60,7 @@ export const Events = () => {
           type="primary"
           color="purple"
           className="w-fit h-fit"
+          link="/events/create_event"
         />
       </div>
       <CardList
