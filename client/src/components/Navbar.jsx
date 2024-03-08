@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: "Events", link: "events/" },
     { name: "Docs", link: "#" },
     { name: "Announcements", link: "announcements/" },
-    { name: "Reports", link: "#" },
+    { name: "Reports", link: "reports/" },
     { name: "Profile", link: "#" },
   ];
 

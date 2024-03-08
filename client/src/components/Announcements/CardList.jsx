@@ -14,8 +14,8 @@ const CardList = (props) => {
     loadAnnouncements();
   }, []);
   const searchValue = props.searchValue;
-  const searchFilteredArray = announcements.filter(announcements => {
-    return announcements.title.toLowerCase().includes(searchValue.toLowerCase());
+  const searchFilteredArray = announcements.filter(announcement => {
+    return announcement.title.toLowerCase().includes(searchValue.toLowerCase());
   });
 
   return (

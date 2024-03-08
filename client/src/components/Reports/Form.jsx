@@ -4,17 +4,18 @@ import Button from "../UI/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { createAnnouncement } from "../../api/announcements.api";
+import { createReport } from "../../api/reports.api";
 
 const Form = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    data.pub_datetime = new Date();
+    data.report_datetime = new Date();
+    data.id_report_status = 3;
     data.id_account = 1;
-    await createAnnouncement(data);
-    navigate("/announcements");
+    await createReport(data);
+    navigate("/reports");
   };
   return (
     <form
@@ -36,14 +37,14 @@ const Form = () => {
         />
       </div>
       <div className="flex flex-col mb-4">
-        <label htmlFor="content">Description *</label>
+        <label htmlFor="description">Description *</label>
         <input
-          id="content"
-          name="content"
+          id="description"
+          name="description"
           className="text-black"
           type="text"
           placeholder="Enter a description"
-          {...register("content", {
+          {...register("description", {
             required: true,
           })}
         />

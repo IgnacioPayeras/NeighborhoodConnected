@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Search from "../components/UI/Search";
 import Button from "../components/UI/Button";
-import CardList from "../components/Announcements/CardList";
+import CardList from "../components/Reports/CardList";
 
-export const Announcements = () => {
+export const Reports = () => {
   const [searchValue, setSearchValue] = useState("");
-  
   return (
     <div className="px-10 mt-10">
-      <h1>Announcements</h1>
+      <h1>Reports</h1>
       <h3>
-        All the ads that have been published.
+      You can report infrastructure and maintenance problems in the neighborhood.
       </h3>
       <div className="xl:flex">
         <Search
@@ -26,7 +25,7 @@ export const Announcements = () => {
           type="primary"
           color="purple"
           className="w-fit h-fit"
-          link="/announcements/create_announcement"
+          link="/reports/create_report"
         />
       </div>
       <CardList searchValue={searchValue}/>

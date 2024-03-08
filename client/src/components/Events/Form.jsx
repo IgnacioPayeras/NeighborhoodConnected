@@ -27,6 +27,7 @@ const Form = () => {
           id="title"
           name="title"
           type="text"
+          className="text-black"
           placeholder="Enter a title"
           required
           {...register("title", {
@@ -39,6 +40,7 @@ const Form = () => {
         <input
           id="startdatetime"
           name="startdatetime"
+          className="text-black"
           type="datetime-local"
           required
           {...register("start_datetime", {
@@ -51,6 +53,7 @@ const Form = () => {
         <input
           id="enddatetime"
           name="enddatetime"
+          className="text-black"
           type="datetime-local"
           required
           {...register("end_datetime", {
@@ -64,6 +67,7 @@ const Form = () => {
           id="location"
           name="location"
           type="text"
+          className="text-black"
           placeholder="Enter a location"
           required
           {...register("location", {
@@ -77,6 +81,7 @@ const Form = () => {
           id="description"
           name="description"
           type="text"
+          className="text-black"
           placeholder="Enter a description"
           {...register("description", {
             required: false,

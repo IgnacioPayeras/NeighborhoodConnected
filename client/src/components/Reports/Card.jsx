@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
-import { deleteAnnouncement } from "../../api/announcements.api";
+import { deleteReport } from "../../api/reports.api.js";
 
 const Card = (props) => {
   const [deleted, setDeleted] = useState(false);
-  const handleDeleteAnnouncement = async (id) => {
-    await deleteAnnouncement(id);
+  const handleDeleteReport = async (id) => {
+    await deleteReport(id);
     setDeleted(true);
   };
   return !deleted ? (
@@ -20,7 +20,7 @@ const Card = (props) => {
           name="Delete"
           type="primary"
           color="red"
-          onClick={() => handleDeleteAnnouncement(props.id)}
+          onClick={() => handleDeleteReport(props.id)}
         />
       </div>
     </div>
