@@ -3,16 +3,12 @@ import Button from "../components/UI/Button";
 import Form from "../components/Events/Form";
 
 export const CreateEventForm = () => {
+  const title = "Create Event"
+  const subtitle = "Form to create events"
+  const link = "/events"
+  const form = <Form />
+
   return (
-    <div className="p-10">
-      <div className="flex flex-col md:flex-row">
-        <Button className="mb-2 md:mr-2" name="← Back" type="primary" color="purple" link="/events"/>
-        <h1>Create Event</h1>
-      </div>
-      <h3>Form to create events</h3>
-      <div className="flex justify-center mt-2">
-        <Form />
-      </div>
-    </div>
+    <CreatePageForm link={link} title={title} subtitle={subtitle} form={form}/>
   );
 };

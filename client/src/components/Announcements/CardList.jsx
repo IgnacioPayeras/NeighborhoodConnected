@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
+import { getAllAnnouncements } from "../../api/announcements.api.js";
 
 const CardList = (props) => {
+  const [announcements, setAnnouncements] = useState([]);
+
+  useEffect(() => {
+    async function loadAnnouncements() {
+      const response = await getAllAnnouncements();
+      setAnnouncements(response.data);
+    }
+
+    loadAnnouncements();
+  }, []);
   const searchValue = props.searchValue;
-  return <div>CardList</div>;
+  const searchFilteredArray = announcements.filter(announcements => {
+    return announcements.title.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
+  return (
+    <div className="lg:grid grid-cols-2 gap-3 xl:grid-cols-3">
+      {searchFilteredArray.map((announcement) => (
+        <Card
+          key={announcement.id}
+          id={announcement.id}
+          title={announcement.title}
+          description={announcement.content}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default CardList;

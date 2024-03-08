@@ -5,3 +5,5 @@ const announcementsApi = axios.create({
 });
 
 export const getAllAnnouncements = () => announcementsApi.get("/");
+export const createAnnouncement = (announcement) => announcementsApi.post("/", announcement);
+export const deleteAnnouncement = (id) => announcementsApi.delete(`/${id}`);
