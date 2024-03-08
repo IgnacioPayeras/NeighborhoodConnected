@@ -14,6 +14,8 @@ import { CreateAnnouncementForm } from "./pages/CreateAnnouncementForm";
 import { Reports } from "./pages/Reports";
 import { CreateReportForm } from "./pages/CreateReportForm";
 
+import { Documents } from "./pages/Documents";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -28,6 +30,8 @@ const App = () => {
         />
         <Route path="/reports" element={<Reports />} />
         <Route path="/reports/create_report" element={<CreateReportForm />} />
+        <Route path="/documents" element={<Documents />} />
+
       </Routes>
     </BrowserRouter>
   );

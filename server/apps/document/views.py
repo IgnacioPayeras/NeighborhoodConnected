@@ -6,7 +6,27 @@ from .models import *
 # Create your views here.
 class RequestDocumentView(viewsets.ModelViewSet):
   serializer_class = RequestDocumentSerializer
-  queryset = Request_document.objects.all()
+
+  def get_queryset(self):
+    id_user = self.request.query_params.get('id_user')
+    id_request_document_status = self.request.query_params.get('id_request_document_status')
+    limit = self.request.query_params.get('limit')
+
+    queryset = Request_document.objects.all()
+    queryset = queryset.order_by("-id")
+    if id_user:
+        queryset = queryset.filter(id_user=id_user)
+
+    if id_request_document_status:
+        queryset = queryset.filter(id_request_document_status=id_request_document_status)
+    
+    if limit:
+        queryset = queryset[:int(limit)]
+
+    
+    return queryset
+
+  
 
 class RequestDocumentStatusView(viewsets.ModelViewSet):
   serializer_class = RequestDocumentStatusSerializer
