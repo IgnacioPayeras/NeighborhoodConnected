@@ -16,11 +16,14 @@ import { CreateReportForm } from "./pages/CreateReportForm";
 
 import { Documents } from "./pages/Documents";
 
+import { Login } from "./pages/Login";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/create_event" element={<CreateEventForm />} />
         <Route path="/announcements" element={<Announcements />} />
@@ -31,7 +34,6 @@ const App = () => {
         <Route path="/reports" element={<Reports />} />
         <Route path="/reports/create_report" element={<CreateReportForm />} />
         <Route path="/documents" element={<Documents />} />
-
       </Routes>
     </BrowserRouter>
   );
