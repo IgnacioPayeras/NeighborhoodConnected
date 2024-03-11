@@ -26,6 +26,7 @@ const CardList = (props) => {
           id={report.id}
           title={report.title}
           description={report.description}
+          account={report.id_account}
         />
       ))}
     </div>

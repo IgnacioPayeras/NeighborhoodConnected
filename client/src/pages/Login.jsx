@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import { useUser } from "../context/UserProvider";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
 import { login } from "../api/login.api";
 import { getUser } from "../api/users.api";
-
 import Button from "../components/UI/Button";
+import { useUser } from "../context/UserContext";
+
 
 export const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  const { updateUser } = useUser();
+
   const onSubmit = async (data) => {
     try {
       const response = await login(data);
       if (response.status === 200) {
         const userResponse = await getUser(response.data.id_user);
-        setUser({
-          id: 1,
-          username: 1,
-          email: 1,
-          role: 1,
-        });
+        updateUser(userResponse.data[0]);
         navigate("/events");
       } else {
-        console.log("Username or paswword wrong!");
+        console.log("Username or password wrong!");
       }
     } catch (error) {
       console.error("Failed to login:", error);

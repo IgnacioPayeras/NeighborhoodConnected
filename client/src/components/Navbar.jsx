@@ -7,7 +7,6 @@ const Navbar = () => {
   const [currentPage, setCurrentPage] = useState("Home");
   const [showMenu, setShowMenu] = useState(false); // Estado para controlar la visualización del menú en pantallas pequeñas
   const navbarItems = [
-    { name: "Home", link: "/" },
     { name: "Events", link: "events/" },
     { name: "Documents", link: "documents/" },
     { name: "Announcements", link: "announcements/" },

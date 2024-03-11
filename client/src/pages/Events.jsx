@@ -3,6 +3,7 @@ import CardList from "../components/Events/CardList";
 import Search from "../components/UI/Search";
 import Button from "../components/UI/Button";
 
+
 import { getAllEvents, getAllUserEvents } from "../api/events.api";
 
 export const Events = () => {
@@ -10,7 +11,7 @@ export const Events = () => {
   const [completedEvents, setCompletedEvents] = useState([]);
   const [participateEvents, setParticipateEvents] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
+  console.log()
   useEffect(() => {
     async function loadEvents() {
       const response = await getAllEvents();

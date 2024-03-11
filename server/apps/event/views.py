@@ -6,11 +6,17 @@ from .models import *
 # Create your views here.
 class EventView(viewsets.ModelViewSet):
   serializer_class = EventSerializer
-  queryset = Event.objects.all()
+
+  def get_queryset(self):
+    limit = self.request.query_params.get('limit')
+    queryset = Event.objects.all()
+    queryset = queryset.order_by("-id")
+    if limit:
+      queryset = queryset[:int(limit)]
+    return queryset
 
 class UserEventView(viewsets.ModelViewSet):
   serializer_class = UserEventSerializer
-
   def get_queryset(self):
     id_user = self.request.query_params.get('id_user')
     if id_user:
