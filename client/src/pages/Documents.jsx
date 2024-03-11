@@ -53,7 +53,11 @@ export const Documents = () => {
         />
       ) : null}
       <h3>Requests</h3>
-      <CardList />
+      <CardList section={1}/>
+      <h3>Actual Request</h3>
+      <CardList section={2}/>
+      <h3>Your Historical Requests</h3>
+      <CardList section={3}/>
     </div>
   );
 };
