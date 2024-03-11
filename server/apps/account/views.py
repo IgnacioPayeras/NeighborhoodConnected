@@ -21,6 +21,8 @@ def user_login(request):
     user = authenticate(request, username=username, password=password)
     if user:
         login(request, user)
-        return Response({'message': 'Login successfully'}, status=status.HTTP_200_OK)
+        account = Account.objects.get(username=username)  # Obtenemos la cuenta
+        serializer = AccountSerializer(account)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     else:
-        return Response({'message': 'Username or password wrong'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({'message': 'Username or password incorrect'}, status=status.HTTP_401_UNAUTHORIZED)

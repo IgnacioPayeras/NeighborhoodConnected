@@ -1,21 +1,34 @@
 import React, { useState } from "react";
+import { useUser } from "../context/UserProvider";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { login } from "../api/login.api";
+import { getUser } from "../api/users.api";
 
 import Button from "../components/UI/Button";
 
 export const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-
+  const { setUser } = useUser();
   const onSubmit = async (data) => {
     try {
       const response = await login(data);
-      console.log(response.data.message);
+      if (response.status === 200) {
+        const userResponse = await getUser(response.data.id_user);
+        setUser({
+          id: 1,
+          username: 1,
+          email: 1,
+          role: 1,
+        });
+        navigate("/events");
+      } else {
+        console.log("Username or paswword wrong!");
+      }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      console.error("Failed to login:", error);
     }
   };
 
