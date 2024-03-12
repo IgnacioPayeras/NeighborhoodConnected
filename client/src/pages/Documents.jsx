@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/UI/Button";
 import CardList from "../components/Documents/CardList";
+import { useUser } from "../context/UserContext";
 
-import { createRequestDocument, getAllRequestDocuments } from "../api/documents.api";
+import {
+  createRequestDocument,
+  getAllRequestDocuments,
+} from "../api/documents.api";
 
 export const Documents = () => {
-  const [requestDocument, setRequestDocument] = useState([]);
-  
+  const [requestDocument, setRequestDocument] = useState(false);
+  const { user } = useUser();
 
   useEffect(() => {
     async function loadRequestDocument() {
-      const response = await getAllRequestDocuments(1, 1, 1);
-      setRequestDocument(response.data);
+      const response = await getAllRequestDocuments(user.id_account, 1, 1);
+      console.log(response.data)
+      setRequestDocument(response.data.length !== 0 ? true : false);
     }
 
     loadRequestDocument();
@@ -30,9 +35,10 @@ export const Documents = () => {
   const initialData = {
     date_request: formattedCurrentDate(),
     id_request_document_status: 1,
-    id_user: 1,
+    id_user: user.id_account,
   };
   const handleRequestDocument = async (data) => {
+    setRequestDocument(true);
     await createRequestDocument(data);
   };
 
@@ -43,7 +49,7 @@ export const Documents = () => {
         You can request the residence certificate. You can also view your
         request history.
       </h3>
-      {!requestDocument ? (
+      {requestDocument === false ? (
         <Button
           name="Request residence certificate"
           type="primary"
@@ -52,12 +58,20 @@ export const Documents = () => {
           onClick={() => handleRequestDocument(initialData)}
         />
       ) : null}
-      <h3>Requests</h3>
-      <CardList section={1}/>
-      <h3>Actual Request</h3>
-      <CardList section={2}/>
-      <h3>Your Historical Requests</h3>
-      <CardList section={3}/>
+      {user.id_account_role === 1 ? (
+        <div className="my-5">
+          <h3>Requests</h3>
+          <CardList section={1} />
+        </div>
+      ) : null}
+      <div className="my-5">
+        <h3>Actual Request</h3>
+        <CardList section={2} />
+      </div>
+      <div className="my-5">
+        <h3>Your Historical Requests</h3>
+        <CardList section={3} />
+      </div>
     </div>
   );
 };

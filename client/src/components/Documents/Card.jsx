@@ -4,7 +4,6 @@ import { updateRequestDocument } from "../../api/documents.api";
 
 const Card = (props) => {
   const [finalState, setFinalState] = useState(props.status);
-
   function formattedCurrentDate() {
     const datetime = new Date();
     const year = datetime.getFullYear();

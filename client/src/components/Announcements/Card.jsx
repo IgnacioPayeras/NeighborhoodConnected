@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
 import { deleteAnnouncement } from "../../api/announcements.api";
+import { useUser } from "../../context/UserContext";
 
 const Card = (props) => {
+  const { user } = useUser();
   const [deleted, setDeleted] = useState(false);
   const handleDeleteAnnouncement = async (id) => {
     await deleteAnnouncement(id);
@@ -14,15 +16,16 @@ const Card = (props) => {
         <h2>{props.title}</h2>
         <p>{props.description}</p>
       </div>
-      <div>
-        <Button className="mr-1" name="Edit" type="primary" color="purple" />
-        <Button
-          name="Delete"
-          type="primary"
-          color="red"
-          onClick={() => handleDeleteAnnouncement(props.id)}
-        />
-      </div>
+      {props.account === user.id_account ? (
+        <div>
+          <Button
+            name="Delete"
+            type="primary"
+            color="red"
+            onClick={() => handleDeleteAnnouncement(props.id)}
+          />
+        </div>
+      ) : null}
     </div>
   ) : null;
 };

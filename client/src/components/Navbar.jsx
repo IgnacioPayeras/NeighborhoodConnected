@@ -11,7 +11,6 @@ const Navbar = () => {
     { name: "Documents", link: "documents/" },
     { name: "Announcements", link: "announcements/" },
     { name: "Reports", link: "reports/" },
-    { name: "Profile", link: "#" },
   ];
 
   // Función para alternar la visualización del menú en pantallas pequeñas

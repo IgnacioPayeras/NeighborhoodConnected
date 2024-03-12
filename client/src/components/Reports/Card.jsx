@@ -16,9 +16,8 @@ const Card = (props) => {
         <h2>{props.title}</h2>
         <p>{props.description}</p>
       </div>
-      {props.account === user.id ? (
+      {props.account === user.id_account ? (
         <div>
-          <Button className="mr-1" name="Edit" type="primary" color="purple" />
           <Button
             name="Delete"
             type="primary"

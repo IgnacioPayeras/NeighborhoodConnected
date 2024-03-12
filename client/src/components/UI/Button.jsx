@@ -10,7 +10,7 @@ const Button = (props) => {
   };
   const buttonTypes = {
     primary: `border-none text-white`,
-    secondary: `border-2 border-white`,
+    secondary: `border-2 border-white text-white`,
   };
 
   const buttonClass = buttonTypes[props.type] || buttonTypes.normal;
