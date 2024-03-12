@@ -65,10 +65,6 @@ export const Documents = () => {
         </div>
       ) : null}
       <div className="my-5">
-        <h3>Actual Request</h3>
-        <CardList section={2} />
-      </div>
-      <div className="my-5">
         <h3>Your Historical Requests</h3>
         <CardList section={3} />
       </div>
