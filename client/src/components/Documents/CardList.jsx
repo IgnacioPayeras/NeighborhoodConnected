@@ -37,6 +37,7 @@ const CardList = (props) => {
             id={request.id}
             date_request={request.date_request}
             status={request.id_request_document_status}
+            date_final_status={request.date_final_status}
           />
         ))
       ) : <span className="text-red font-bold italic">No requests</span>) : section === 3 ? (ownRequests ? ownRequests.map((request) => (
@@ -45,6 +46,7 @@ const CardList = (props) => {
           id={request.id}
           date_request={request.date_request}
           status={request.id_request_document_status}
+          date_final_status={request.date_final_status}
         />
       )) : <span className="text-red font-bold italic">No requests</span>) : (latestRequest ? (
         <Card
@@ -52,6 +54,7 @@ const CardList = (props) => {
           id={latestRequest.id}
           date_request={latestRequest.date_request}
           status={latestRequest.id_request_document_status}
+          date_final_status={latestRequest.date_final_status}
         />
       ) : <span className="text-red font-bold italic">No requests</span>)}
     </div>
